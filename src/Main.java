@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
 
@@ -16,13 +17,24 @@ public class Main {
     // fast using bit vectors and naturally ordered
     var annsDaySet = EnumSet.copyOf(annsWorkDays);
     System.out.println(annsDaySet.getClass().getSimpleName());
+    System.out.println("annsDaySet");
     annsDaySet.forEach(System.out::println);
     System.out.println("---------------------------------------------");
 
-    var allDaySet = EnumSet.allOf(WeekDay.class);
-    allDaySet.forEach(e -> System.out.println(e.ordinal() + ": " + e));
+    var allDaysSet = EnumSet.allOf(WeekDay.class);
+    System.out.println("EnumSet.allOf(WeekDay.class)");
+    allDaysSet.forEach(e -> System.out.println(e.ordinal() + ": " + e));
     System.out.println("---------------------------------------------");
 
+    Set<WeekDay> newPersonDays = EnumSet.complementOf(annsDaySet);
+    System.out.println("EnumSet.complementOf(annsDaySet)");
+    newPersonDays.forEach(e -> System.out.println(e.ordinal() + ": " + e));
+    System.out.println("---------------------------------------------");
+
+    Set<WeekDay> anotherWay = EnumSet.copyOf(allDaysSet);
+    anotherWay.removeAll(annsDaySet);
+    System.out.println("Another way");
+    anotherWay.forEach(e -> System.out.println(e.ordinal() + ": " + e));
 
 
   }
