@@ -35,6 +35,10 @@ public class Main {
     anotherWay.removeAll(annsDaySet);
     System.out.println("Another way");
     anotherWay.forEach(e -> System.out.println(e.ordinal() + ": " + e));
+    System.out.println("---------------------------------------------");
+
+    Set<WeekDay> businessDays = EnumSet.range(WeekDay.MONDAY, WeekDay.FRIDAY);
+    businessDays.forEach(e -> System.out.println(e.ordinal() + ": " + e));
 
 
   }
